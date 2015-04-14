@@ -1,0 +1,170 @@
+Question 1.0
+
+To begin we determine the probabilty of winning a car if we
+1. Always Switch
+2. Always DO NOT switch
+
+The idea behind this works as follows.
+If we always switch, then we want the probability of choosing a goat door. The host
+    is always revealing one of the goat doors, so if we happen to be able to choose
+    a goat door on our first guess, then switching will yield us the car.
+If we don't switch, then we are left with the probability of our first choice.
+
+The proof can be shown using Bayes theorem.
+
+Let the doors be numbered 1,2,3
+Without loss of generality, assume we always choose door 1 for our first guess.
+let Xi be the event that door i has the car.
+let Yi be the event that door i is open by the host.
+
+
+To calculate the probability of wining a car given that we always switch:
+We want the P( X3 | Y2) = P( Y2 | X3) * P(X3) / P (Y2)
+    P(Y2 | X3) = 1
+        Door 3 has the car, the user has chosen door 1; therefore
+        the host will always reveal door 2.
+    P(X3) = 1/3
+        The car can be behind any of the 3 doors.
+    P(Y2)
+        1/3*1/2 + 1/3*0 + 1/3*1 = 1/2
+        (1)         (2)     (3)
+        (1) If the car is behind door 1, then the host can show us either door 2, or door 3
+        (2) If the car is behind door 2, therefore the host will never show us door 2
+        (3) If the car is behind door 3, then the host will always show us door 2
+    P(X3 | Y2) = (1 * 1/3)/ (1/2)
+    P(X3 | Y2) = 2/3
+
+To calculate the probailty of winning a car given that we don't switch:
+We want the P( X1 | Y2) = P( Y2 | X1) * P(X1)  / P(Y2)
+    P( Y2 | X1) = 1/2
+        reasoning: Door 1 has already been chosen by us,therefore the host
+            only has 2 options; either door 2 or door 3
+    P(X1) = 1/3
+        The car can be behind any of the 3 doors
+    P(Y2) = 1/2
+        1/3*1/2 + 1/3*0 + 1/3*1 = 1/2
+        (1)         (2)     (3)
+        (1) If the car is behind door 1, then the host can show us either door 2, or door 3
+        (2) If the car is behind door 2, therefore the host will never show us door 2
+        (3) If the car is behind door 3, then the host will always show us door 2
+
+    P( X1 | Y2 ) = (1/3 * 1/2) / 1/2
+    P( X1 | Y2 ) = 1/3
+
+Therefore
+Prob(Winning | Switch) = 2/3
+Prob(Losing  | Switch) = 1 - 2/3 = 1/3
+Prob(Winning | ~Switch) = 1/3
+Prob(Losing  | ~Switch) = 1 - 1/3 = 2/3
+
+Variant I
+P(Switch | Win) = P(Win | Switch)*0.5 + P(Win | ~Switch)*0.5
+P(Switch | Win) = (2/3)*(1/2) = 1/3
+
+Variant II
+P(2 wins) = P(Win | Switch)*P(Win | ~Switch)
+P(2 wins) = (2/3)*(1/3) = 2/9
+
+P(2 lose) = P(Lose | Switch)*P(Lose | ~Switch)
+P(2 lose) = P(1/3)*P(2/3) = 2/9
+
+http://angrystatistician.blogspot.ca/2012/06/bayes-solution-to-monty-hall.html
+
+
+
+Question 2.0
+
+Let C be the classification of the document.
+    Therefore C \elem {c1,c2,c3,... ,cn}
+Let D be the document to classify.
+    Each document is represented as a vector [ x1,x2,x3 , ... xn]
+    Each entry xi represents the presence/absence of a keywords wi
+    Therefore xi \elem {True,False}. Note the discreteness of the attributes.
+
+The model we desire is the function
+F(x) : D -> C which maps x \elem D to a category C
+
+To determine this function we use a naive bayes model to represent the problem.
+The naive bayes model allows us to assume that each keyword/attribute in the document
+is conditionally independent given the classification.
+We also make an assumption that the classifcation of a document is mutually exclusive.
+Therefore a document d cannot both be of classification ci and cj where i != j
+
+To begin we investigate the simpler case of identify a document d given
+only a single classifcation ci.
+    P(ci | d) = (P( d | ci) * P(ci)) /  P(d)
+
+    This represents the probabilty that given document d, the classification
+    of the document is Ci.
+
+To classify for the more general case:
+
+We calculate the probability that document D for all the classifications in C
+and choose the classifcation which has the highest probabilty.
+
+for ci in C Max( P(ci | d))
+
+
+Therefore the final function is:
+
+for ci in C Max( P(d | ci) * P(ci) / P(d) )
+
+// we can drop the P(D) because it is constant and does not effect the
+// relative probablities between the classifications.
+for ci in C Max( P(d | ci) * P(ci) )
+
+// we expand the document D into its vector form
+for ci in C Max( P(x1,x2,x3,...,xn | ci) * P(ci))
+
+We note that P(x1,x2,x3,...,xn | ci) given our naive bayes assumption can be easily calculated
+P(x1,x2,x3,...,xn | ci) = Product(P(xi|ci))
+
+
+Therefore the model we wish to construct conditional probability table for each xi given ci
+foreach xi,ci
+1. foreach xi,ci P( xi | ci)
+2. foreach xi,ci P(~xi | ci)
+3. P(ci)
+
+These can easily be calculated empiracally using the training data set.
+Let n be the number of classified documents in the data set.
+Let mi be the number of documents classified as ci in the data set.
+P(ci) = mi / n
+
+Let ri be the number of documents classified as ci and contains the word
+P(xi | ci) = ri / mi
+P(~xi | ci) = 1 - P(xi | ci)
+
+
+school connex uvic assignment student
+personal steam programming lily peter
+prof linkedin coop interview university
+Issues:
+    How to deal with zero frequency keywords when calcuating P(xi | ci)
+    What do you multiply if the keyword is not present?
+    Tedious to classify all emails for the training set.
+
+
+Question 3.0
+
+
+Question 4.0
+Goal Predicate:
+    attending class?
+
+Attributes:
+Type: Lecture, Lab, Tutorial
+Participation marks: T, F
+Midterm: T, F
+Time of class: Early, Afternoon, Late
+Enjoyable : Yes, No
+Hours of Sleep Last Night : <=5, 6, >= 7
+Other HW : None, Medium , Lots
+
+
+Training Dateset
+
+
+
+refs:
+http://www.seas.upenn.edu/~cis521/

@@ -1,0 +1,23 @@
+predict 'q2_training_data.txt' => school
+
+Classification : School
+Email 1 : assignment uvic connex steam student connex uvic programming connex connex
+Email 2 : assignment university student student assignment programming lily peter connex student
+Email 3 : university steam coop programming assignment programming connex connex uvic university
+Email 4 : connex student coop steam lily student uvic student university coop
+Email 5 : peter coop uvic assignment connex linkedin connex student uvic student
+
+Classification : Personal
+Email 1 : university linkedin interview linkedin steam programming coop lily connex lily
+Email 2 : linkedin uvic lily steam interview interview lily programming connex programming
+Email 3 : uvic peter steam lily connex coop student steam programming lily
+Email 4 : uvic coop coop programming peter university lily coop steam peter
+Email 5 : programming linkedin peter lily lily steam connex steam steam student
+
+Classification : Professional
+Email 1 : coop coop university coop coop connex interview linkedin assignment coop
+Email 2 : linkedin coop student lily university linkedin student coop student student
+Email 3 : uvic coop linkedin peter linkedin student peter uvic university linkedin
+Email 4 : linkedin interview coop linkedin linkedin interview interview student interview assignment
+Email 5 : lily university uvic connex coop coop coop linkedin linkedin coop
+

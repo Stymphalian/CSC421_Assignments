@@ -1,0 +1,45 @@
+Question 1.
+   EXP => ATOM | COMPLEX
+   ATOM => True | False | IDEN
+   IDEN => [_a-zA-Z0-9]
+   COMPLEX => (EXP)
+      |  ~EXP        // negation
+      |  EXP * EXP   // logical AND
+      |  EXP + EXP   // logical OR
+      |  EXP -> EXP  // logical implication
+      |  EXP / EXP   // logical if and only if
+
+   OPERATOR PRECEDENCE (lowest to highet): ~,*,+,->,/   
+
+   Reference
+      textbook (page 244)
+
+Question 2.
+   Refer to source files:
+      main_logic.py
+      logic.py
+      test_logic.py
+
+Question 3.
+   English to FOL
+
+Question 4.
+   EXP => FORMULA | IDEN | VAR
+   FORMULA => IDEN(EXP,...,EXP)  // a formula consists of an IDEN surrounding EXPs
+   IDEN => [_a-zA-Z0-9]          // normal ascii word to represent a value
+   VAR => [a-z]IDEN              // lower case identifier
+
+   Refer to Source files:
+      main_match.py
+      match.py
+      test_match.py
+
+Question 5.
+   Refer to source files:
+      question_5.pl for the prolog database
+
+   References
+      http://www.doc.gold.ac.uk/~mas02gw/prolog_tutorial/prologpages/index.html#menu
+      prolog implementation = http://swish.swi-prolog.org/
+
+   

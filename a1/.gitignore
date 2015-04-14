@@ -1,0 +1,6 @@
+/objdir
+/misc
+*~
+*.tmp
+*.exe
+*.o

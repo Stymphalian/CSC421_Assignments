@@ -1,0 +1,46 @@
+Author: Jordan Yu
+
+Assignment 1 for CSC421: Introduction to Artificial Intelligence
+In this assignment we were required to implement serveral search-based algorithms.
+The main problem is to navigate from a start node to a destination node in a hexagonal grid.
+The grid is randomly generated and there are several "blocked" edges.
+The algorithms implemented include:
+	DFS
+	BFS
+	A*
+	Greedy Search : Using mahattan distance as heuristice
+	Hill-Climb : Using a custom heuristic function
+
+
+
+states:    
+    A graph representing the edges between the tiles.
+    A current tile in which the robot resides
+    
+initial state:
+    a random hex-tile
+
+actions:
+    move in one of the six possible directionns from the current tile.
+
+transition model:
+    given a state and an action return the new state.
+    take an action, move to the other node.
+
+goal test:
+    check to see if the current tile is the desired final tile
+
+path cost: 
+    each move costs 1.
+
+
+
+
+For my given arrangment of the tiles:
+    1) general direction of my tiles form a hexagon.
+    choose children tiles whose direction is closest.
+    2) manhattan distance. record the distance when gerenating each of the
+    nodes, thereby allowing you to calculate the absolute distance between nodes
+    choose the nodes which are closer.
+
+
